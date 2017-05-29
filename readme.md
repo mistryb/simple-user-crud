@@ -1,5 +1,16 @@
 # Simple User Crud
 
+This simple user CRUD achieves the following: 
+** Gives the ability to create and update a user. In each of these operations, the time that the change was made is recorded.
+** The ability to delete a user. Admin users can not be deleted.
+** The ability to see all the users that are currently in the table.
+
+
+Instructions for getting going:
+1. Pull the repository
+2. Run migrations : `php artisan migrate`
+3. Install and update Composer
+4. Install and update Bower
 
 # Laravel PHP Framework
 

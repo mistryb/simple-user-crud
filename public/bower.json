@@ -1,0 +1,21 @@
+{
+  "name": "simple-user-crud",
+  "homepage": "https://github.com/mistryb/simple-user-crud",
+  "authors": [
+    "Bhavik Mistry <bhavik.mistry@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
