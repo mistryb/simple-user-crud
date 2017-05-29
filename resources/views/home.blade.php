@@ -10,7 +10,7 @@
             <strong>{{ $user->username }}</strong>
             <p>{{ $user->email }}</p>
             <a class="btn btn-primary btn-sm" href="{{ URL::to('users/' . $user->id . '/edit') }}">Edit User</a>
-            <button type="button" class="btn btn-danger btn-sm">Delete User</button>
+            <a data-id="{{ $user->id }}" data-username="{{ $user->username }}" class="btn btn-danger btn-sm delete-user">Delete User</a>
         </div>
     </div>
     @endforeach

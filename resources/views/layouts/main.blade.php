@@ -3,10 +3,11 @@
         <title>Simple User Crud - @yield('title')</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- LOAD BOOTSTRAP -->
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="/bower_components/sweetalert/dist/sweetalert.css">
         
     </head>
     <body>
@@ -29,5 +30,13 @@
         <div class="container">
             @yield('content')
         </div>
+        
+        <!-- LOAD JS-->
+        <script src="/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        
+        <script src="/js/app.js"></script>
+        
     </body>
 </html>
