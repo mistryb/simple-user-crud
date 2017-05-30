@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use App\User;
+use App\UserRole;
 
 class UserController extends Controller
 {
@@ -34,7 +35,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = UserRole::lists('label', 'id');
+        
+        return view('users.create', ['roles' => $roles]);
     }
 
     /**
@@ -45,8 +48,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // validate
-        // read more on validation at http://laravel.com/docs/validation
+        
+        // var_dump(Input::all());
+        //validate
         $rules = array(
             'username' => 'required',
             'email' => 'required|email',
@@ -61,6 +65,7 @@ class UserController extends Controller
             $user = new User;
             $user->username = Input::get('username');
             $user->email = Input::get('email');
+            $user->user_roles_id = Input::get('user_roles_id');
             $user->save();
             return Redirect::to('users');
         }
@@ -88,7 +93,6 @@ class UserController extends Controller
         // find the user
         $user = User::find($id);
         $user->load('address');
-        $user->load('role');
 
         // show the edit form and pass the user
         return view('users.edit', ['user' => $user]);
@@ -118,8 +122,12 @@ class UserController extends Controller
             // store
             $user = User::find($id);
             $user->fill(Input::all())->save();
-            $user->address->fill(Input::all()['address'])->save();
-
+            if(!is_null($user->address)){
+                $user->address->fill(Input::all()['address'])->save();    
+            }else{
+                $user->address()->create(Input::all()['address']);
+            }
+            
             // redirect
             Session::flash('message', 'Successfully updated user!');
             return Redirect::to('users');

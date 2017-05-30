@@ -55,7 +55,7 @@
             <div class="content">
                 <div class="title">Simple User CRUD</div>
                 <div class="sub-title">OH SO SIMPLE.</div>
-                <button class="btn btn-default btn-started" type="submit">Let's Get Started</button>
+                <a href="/users" class="btn btn-default btn-started">Let's Get Started</a>
             </div>
         </div>
         

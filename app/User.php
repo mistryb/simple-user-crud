@@ -12,15 +12,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email',
+        'username', 'email', 'user_roles_id',
     ];
     
     public function address(){
         return $this->hasOne('App\UserAddress');
-    }
-    
-    public function role(){
-        return $this->belongsTo('App\UserRole');
     }
     
 }
