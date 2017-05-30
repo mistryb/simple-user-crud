@@ -87,6 +87,8 @@ class UserController extends Controller
     {
         // find the user
         $user = User::find($id);
+        $user->load('address');
+        $user->load('role');
 
         // show the edit form and pass the user
         return view('users.edit', ['user' => $user]);
@@ -105,20 +107,18 @@ class UserController extends Controller
         $rules = array(
             'username' => 'required',
             'email' => 'required|email',
-            'id' => 'required'
         );
         
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails()) {
-            return Redirect::to('users/create')
+            return Redirect::to('users/edit')
                 ->withErrors($validator);
         } else {
             // store
             $user = User::find($id);
-            $user->username = Input::get('username');
-            $user->email = Input::get('email');
-            $user->save();
+            $user->fill(Input::all())->save();
+            $user->address->fill(Input::all()['address'])->save();
 
             // redirect
             Session::flash('message', 'Successfully updated user!');

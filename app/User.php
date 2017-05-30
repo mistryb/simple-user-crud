@@ -15,6 +15,12 @@ class User extends Authenticatable
         'username', 'email',
     ];
     
+    public function address(){
+        return $this->hasOne('App\UserAddress');
+    }
     
+    public function role(){
+        return $this->belongsTo('App\UserRole');
+    }
     
 }
