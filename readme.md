@@ -1,4 +1,12 @@
 # Simple User Crud
+
+## Installation Instructions
+1. Pull repository.
+2. Update Composer.
+3. Install Bower Components in the public directory.
+4. Run migrations.
+5. Enjoy.
+
 ## Design Assumptions and Decisions
 * No Authentication methods were implemented.
 * As minimal information is stored, a separate page dedicated to viewing the user was omitted. Instead all the information for a user can be seen in the list view.
