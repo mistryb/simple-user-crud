@@ -5,10 +5,10 @@
 * User Roles cannot be edited, only set when a user is created. As user roles really serve no purpose with the lack of authentication. 
 
 ## API Documentation
-* `GET` /getUserById 
-* `GET` /getAllUsers
-* `POST` /createUser
-* `POST` /updateUser
+* [`GET` /getUserById](#get-getuserbyid)
+* [`GET` /getAllUsers](#get-getallusers)
+* [`POST` /createUser](#post-createuser)
+* [`POST` /updateUser](#post-updateUser)
 
 ### `GET` /getUserById
 #### Description
@@ -20,7 +20,7 @@ JSON containing the User object
 #### Example
 Request
 ```
-https://simle-user-crud-mistryb.c9users.io/getUserById?id=1
+https://simle-user-crud-mistryb.c9users.io/getUserById?id=2
 ```
 
 Response
@@ -32,6 +32,96 @@ Response
   "email": "publisher@test.com",
   "created_at": "2017-05-20 13:05:53",
   "updated_at": "2017-05-22 15:08:53"
+}
+```
+---
+### `GET` /getAllUsers
+#### Description
+Gets all the users in the system
+#### Parameters
+* none
+#### Return Format
+Array containing the Users
+#### Example
+Request
+```
+https://simle-user-crud-mistryb.c9users.io/getAllUsers
+```
+
+Response
+```
+[
+  {
+    "id": 2,
+    "user_roles_id": 2,
+    "username": "I_Publish",
+    "email": "publisher@test.com",
+    "created_at": "2017-05-20 13:05:53",
+    "updated_at": "2017-05-22 15:08:53"
+  },
+  {
+    "id": 13,
+    "user_roles_id": 1,
+    "username": "sdfsdf",
+    "email": "sdfsd@sdfsdf.com",
+    "created_at": "2017-05-30 14:41:44",
+    "updated_at": "2017-05-30 14:41:44"
+  }
+]
+```
+---
+
+### `POST` /createUser
+#### Description
+Creates a new user in the system
+#### Parameters
+* username : the username for the new user
+* email : the email for the new user
+#### Return Format
+JSON object of the new user created
+#### Example
+Request
+```
+https://simle-user-crud-mistryb.c9users.io/createUser?username=testingjohn&email=jtest@hotmail.com
+```
+
+Response
+```
+{
+  "username": "testingjohn",
+  "email": "jtest@hotmail.com",
+  "updated_at": "2017-05-30 15:27:15",
+  "created_at": "2017-05-30 15:27:15",
+  "id": 14
+}
+```
+---
+
+
+### `POST` /updateUser
+#### Description
+Updates a user in the system
+#### Parameters
+* id : the id of the user to be edited
+* any of the users data that needs to be updated
+#### Return Format
+JSON object of the updated user
+#### Example
+Request
+```
+https://simle-user-crud-mistryb.c9users.io/updateUser?username=testingEdited&id=2
+
+```
+
+Response
+```
+{
+  "id": 2,
+  "user_roles_id": 2,
+  "username": "testingEdited",
+  "email": "publisher@test.com",
+  "created_at": "2017-05-20 13:05:53",
+  "updated_at": "2017-05-30 15:29:51"
 }
 ```
 
