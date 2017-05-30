@@ -3,6 +3,7 @@
 * No Authentication methods were implemented.
 * As minimal information is stored, a separate page dedicated to viewing the user was omitted. Instead all the information for a user can be seen in the list view.
 * User Roles cannot be edited, only set when a user is created. As user roles really serve no purpose with the lack of authentication. 
+* Deleting can only be done through the web application to allow for a confirmation prompt before deletion.
 
 ## API Documentation
 * [`GET` /getUserById](#get-getuserbyid)
