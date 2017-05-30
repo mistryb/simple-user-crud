@@ -17,6 +17,7 @@ class UserRole extends Model
         'label'
     ];
     
+    // Define the users relationship
     public function users(){
         return $this->hasMany('App/Users', 'user_roles_id');
     }

@@ -7,11 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     
-    // this is a recommended way to declare event handlers
+    // Declare an even handler
     protected static function boot() {
         parent::boot();
 
-        static::deleting(function($user) { // before delete() method call this
+        static::deleting(function($user) { 
              $user->address()->delete();
         });
     }
@@ -26,6 +26,7 @@ class User extends Authenticatable
         'username', 'email', 'user_roles_id',
     ];
     
+    // Define the address relationship
     public function address(){
         return $this->hasOne('App\UserAddress');
     }

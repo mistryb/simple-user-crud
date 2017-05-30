@@ -35,6 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        // Get the User Roles List ready for dropdowns
         $roles = UserRole::lists('label', 'id');
         
         return view('users.create', ['roles' => $roles]);
@@ -49,8 +50,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         
-        // var_dump(Input::all());
-        //validate
         $rules = array(
             'username' => 'required',
             'email' => 'required|email',
@@ -69,17 +68,6 @@ class UserController extends Controller
             $user->save();
             return Redirect::to('users');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -122,6 +110,8 @@ class UserController extends Controller
             // store
             $user = User::find($id);
             $user->fill(Input::all())->save();
+            
+            // Check if the user already has an address object defined.
             if(!is_null($user->address)){
                 $user->address->fill(Input::all()['address'])->save();    
             }else{
@@ -155,6 +145,7 @@ class UserController extends Controller
      * 
      * -----------------
      * API METHODS
+     * These methods are separated as they do not require CSRF tokens to be passed.
      * -----------------
      * 
      ***/ 
