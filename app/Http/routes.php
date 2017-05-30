@@ -11,9 +11,18 @@
 |
 */
 
+// WELCOME ROUTE
 Route::get('/', function () {
     return view('welcome');
 });
 
+// USERS RESOURCE
 Route::resource('users', 'UserController');
+
+// API
+
+Route::post('/createUser', ['uses' => 'UserController@createUser']);
+Route::post('/updateUser', ['uses' => 'UserController@updateUser']);
+Route::get('/getAllUsers', ['uses' => 'UserController@getAllUsers']);
+Route::get('/getUserById', ['uses' => 'UserController@getUserById']);
 

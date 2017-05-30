@@ -10,8 +10,18 @@ $(document).ready(function(){
         }
     }); // END OF ajaxSetup
     
-    // Function to handle the call to and from the server
     
+    
+    /**
+     * 
+     * @function
+     * @name deleteUser
+     * @desc calls the server requesting to delete the user
+     * 
+     * @param id the id of the user to be deleted
+     * @param handleData a callback function
+     * 
+     **/ 
     deleteUser = function(id, handleData){
         return $.ajax({
                 url: '/users/' + id,
@@ -20,15 +30,22 @@ $(document).ready(function(){
             });
     } // END OF deleteUser
     
-    // When a delete user element is pressed, raise a Sweet Alert to prompt the user.
-   $('.delete-user').click(function() {
-       
-       var id, username; 
-       
-       // Set the user id
-       id = $(this).data('id');
-       username = $(this).data('username');
-      
+    
+    /**
+     * Attach a behaviour to the delete-user class
+     * 
+     **/
+     
+     $('.delete-user').click(function() {
+         
+         // Define Variables
+         var id, username; 
+         
+         // Set variables
+         id = $(this).data('id');
+         username = $(this).data('username');
+        
+        // Raise a SweetAlert
         swal({
             title: "Are you sure?",text: "You will not be able to recover this user later!",
             type: "warning",
@@ -39,9 +56,11 @@ $(document).ready(function(){
             showLoaderOnConfirm : true,
             },
             function(isConfirm){
+                // If the user pressed the confirm button              
                 if(isConfirm){
                     deleteUser(id, function(output){
                         swal({ title:"Your User has been deleted!" }, function(){
+                            // Reload the page.
                             location.reload();
                         });
                     });

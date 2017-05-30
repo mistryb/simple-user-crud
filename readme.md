@@ -1,16 +1,22 @@
 # Simple User Crud
 
-This simple user CRUD achieves the following: 
-** Gives the ability to create and update a user. In each of these operations, the time that the change was made is recorded.
-** The ability to delete a user. Admin users can not be deleted.
-** The ability to see all the users that are currently in the table.
+Specifications:
+
+Provide an implementation based on the specifications below, using a PHP MVC framework of your choice (Laravel is recommended, but other options are also acceptable)
+
+Using the DB schema specified in the attached .sql file, create a basic web application that includes the following:
+
+A web Front-End that performs CRUD functionality for user objects
+
+RESTful API endpoints that provide CRUD functionality for user objects
+
+Deliverables:
 
 
-Instructions for getting going:
-1. Pull the repository
-2. Run migrations : `php artisan migrate`
-3. Install and update Composer
-4. Install and update Bower
+Source code checked into version control, with a link where we can access it.
+Documentation outlining the API endpoints and parameters that get passed in. 
+Documentation describing any design decisions you made that weren’t straightforward. 
+(Documentation can either be in version control or shared separately via email). 
 
 # Laravel PHP Framework
 
