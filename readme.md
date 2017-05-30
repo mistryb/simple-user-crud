@@ -5,10 +5,36 @@
 * User Roles cannot be edited, only set when a user is created. As user roles really serve no purpose with the lack of authentication. 
 
 ## API Documentation
-* `GET` /getUsersById
+* `GET` /getUserById 
 * `GET` /getAllUsers
 * `POST` /createUser
 * `POST` /updateUser
+
+### `GET` /getUserById
+#### Description
+Gets a user given an id
+#### Parameters
+* id : The ID of the user being requested
+#### Return Format
+JSON containing the User object
+#### Example
+Request
+```
+https://simle-user-crud-mistryb.c9users.io/getUserById?id=1
+```
+
+Response
+```
+{
+  "id": 2,
+  "user_roles_id": 2,
+  "username": "I_Publish",
+  "email": "publisher@test.com",
+  "created_at": "2017-05-20 13:05:53",
+  "updated_at": "2017-05-22 15:08:53"
+}
+```
+
 
 ## Requirements Provided
 
