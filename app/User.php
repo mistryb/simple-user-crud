@@ -6,6 +6,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    
+    // this is a recommended way to declare event handlers
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) { // before delete() method call this
+             $user->address()->delete();
+        });
+    }
+    
+    
     /**
      * The attributes that are mass assignable.
      *
